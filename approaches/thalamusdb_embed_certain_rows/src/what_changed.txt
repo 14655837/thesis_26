@@ -1,0 +1,8 @@
+What has been changed?
+
+This folder is a copy of the ThalamusDB and then an implementation of embedding the images and ordering the
+images based on the embedding at the moment one (or more) certain rows are found. The the most
+similar to the certain rows are sorted to come first. The only files that are changed are engine.py, 
+relational.py and sementic_filter.py.
+
+Another approach could still be to embed the NLfilter and then compare!

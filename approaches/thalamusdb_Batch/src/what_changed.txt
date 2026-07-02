@@ -1,0 +1,10 @@
+What has been changed?
+
+This folder is a copy of the original ThalamusDB, where the way of how the language part of the query is executed is changed.
+Previously every row was checked with a seperate LLM call if the filter of the NLfilter is or isn't the case. This was done
+simitanuaslly. This is chanegd to Batch, where the batch is a variable that could be changed. 
+
+This appears to be reducing the amount of LLM calls significantly (depending on the var of the batch). 
+It requires more testing!
+
+The only files that are changed are the semantic_filter.py and engine.py.
