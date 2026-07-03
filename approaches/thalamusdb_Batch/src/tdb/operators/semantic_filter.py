@@ -55,6 +55,8 @@ class UnaryFilter(SemanticOperator):
         self.filter_sql = predicate.sql
         self.tmp_table = f'ThalamusDB_{self.operator_ID}'
 
+    #Changed function, to a fucntion where all the number of batch_size items are sent together to an LLM
+    # The uncommented code was the previous version.
     def _evaluate_predicate_parallel(self, item_texts, batch_size = 10):
         """Evaluates the filter conditions using the LLM concurrently (threads).
 
@@ -80,8 +82,7 @@ class UnaryFilter(SemanticOperator):
         for i in range(num_iterations):
             start = 0 + batch_size * i
             end = batch_size + batch_size * i
-            # if batch_size > length:
-            #     end = -1
+
             message_input = item_texts[start : end]
             messages = [self._batch_message(message_input)]
             base = self._best_model_args(messages)['filter']
