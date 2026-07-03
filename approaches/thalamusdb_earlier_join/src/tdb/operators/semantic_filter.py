@@ -201,19 +201,8 @@ class UnaryFilter(SemanticOperator):
 
 
         other_filters = self.query.alias2unary_sql[self.filtered_alias]
-        # where_sql = (
-        #     f'WHERE {other_filters.sql()} '
-        #     f'AND {self.filtered_column} IS NOT NULL')
-        # fill_table_sql = \
-        #     f'INSERT INTO {self.tmp_table} ' + \
-        #     'SELECT NULL, NULL, ' + \
-        #     ', '.join(c[0] for c in base_columns) + ' ' + \
-        #     'FROM ' + self.filtered_table + ' ' + \
-        #     where_sql
-        # self.db.execute2list(fill_table_sql)
-        
         #Changed
-        # ___
+        # _____________________________________________________________________
         extra_conditions = []
 
         for pred in self.query.cross_table_predicates:
@@ -251,7 +240,7 @@ class UnaryFilter(SemanticOperator):
             + ', '.join(c[0] for c in base_columns)
             + f' FROM {self.filtered_table} {where_sql}')
         self.db.execute2list(fill_table_sql)
-        #___
+        #__________________________________________________________
 
         # Initialize count of unprocessed tasks
         count_sql = f'SELECT COUNT(*) FROM {self.tmp_table}'
