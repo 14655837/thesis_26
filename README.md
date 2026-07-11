@@ -20,4 +20,6 @@ The preprocessing folder contains two files, which were used to create the data 
 The file run_sim.py, was created and used to automate the testing and experimenting process. It contains functions that were used to run and measure runs and to then save them in excel. It also contains the queries used for the runs.
 ## Analysis
 The file accuracy.py was used and created to analyze the quality of the runs. This includes creating tables for precision, accuracy and F1-score. The file analysis.py was created to analyse the speed and costs of the approaches. The code was used to create tables and figures for the measurements done.
+## Rest
+The folder /example_data shows an example of a DuckDB database that was used for the medical scenario and the json file shows what models were used for most of the testing.
 More context can be found in the thesis itself.
