@@ -140,7 +140,6 @@ class UnaryFilter(SemanticOperator):
             dict: Message for the LLM.
         """
         batch_task = f"Which of the following items fullfil the condition {self.filter_condition}? Reply with only the IDs, which have to be seperated with commas (e.g. 'I0,I2,I3')."
-        #batch_task = batch_task = f"For each item below, determine whether it satisfies this condition: '{self.filter_condition}'. Reply with only the IDs of matching items, separated by commas (e.g. 'I0,I2,I3'). If none match, reply with an empty string."
         content = [{'type': 'text', 'text': batch_task}]
         for idx, item_text in enumerate(item_texts):
             # Label for this item
