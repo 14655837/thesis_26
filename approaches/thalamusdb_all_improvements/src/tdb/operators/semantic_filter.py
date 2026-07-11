@@ -276,47 +276,6 @@ class UnaryFilter(SemanticOperator):
         self.counters.unprocessed_tasks -= len(items_to_process)
 
     #ADDED
-    # def _open_embeddings(self):
-    #     print("self.filtered_column = ", self.filtered_column)
-
-    #     columns = self.filtered_column if isinstance(self.filtered_column, list) else [self.filtered_column]
-    #     path_column = next((col for col in columns if col.endswith("_path")), None)
-    #     if path_column is None:
-    #         print("Nothing happened, no _path column found in filtered_column")
-    #         return None, None
-
-    #     prefix = path_column.replace("_path", "").split("_")[-1]  # e.g. "image" or "audio"
-    #     existing_tables = {row[0] for row in self.db.execute2list("SHOW TABLES")}
-
-    #     # Find table that contains the prefix and has an embeddings column
-    #     table = next(
-    #         (t for t in existing_tables
-    #         if prefix in t
-    #         and "embeddings" in [row[1] for row in self.db.execute2list(f"PRAGMA table_info('{t}')")]),
-    #         None
-    #     )
-
-    #     if table is None:
-    #         print(f"No embedding table found for {path_column} (looked for table with '{prefix}' and 'embeddings' column)")
-    #         return None, None
-
-    #     col_info = self.db.execute2list(f"PRAGMA table_info('{table}')")
-    #     col_names = [row[1] for row in col_info]
-
-    #     # Prefer any _id column that isn't image_id
-    #     id_col = next((c for c in col_names if c.endswith("_id") and c != "image_id"), None) or \
-    #             next((c for c in col_names if c == "id"), None)
-    #     if id_col is None:
-    #         print(f"Could not find an id column in {table}")
-    #         return None, None
-    #     type_of_id = id_col
-
-    #     rows = self.db.execute2list(f"SELECT {type_of_id}, embeddings FROM {table}")
-    #     vectors = {int(row[0]): np.array(row[1]) for row in rows}
-    #     print(f"Embeddings loaded from {table}: {len(vectors)}")
-    #     print(f"type_of_id: {type_of_id}")
-    #     print(self.db.execute2list(f"PRAGMA table_info('{self.tmp_table}')"))
-    #     return vectors, type_of_id
     def _open_embeddings(self):
         print("self.filtered_column = ", self.filtered_column)
 

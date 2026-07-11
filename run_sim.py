@@ -23,28 +23,7 @@ AND cars.transmission = 'Manual'
 AND NLfilter(car_images.image_path, 'You are given an image of a vehicle or its parts. Return true if car is not damaged.')
 LIMIT 10
 """
-# sql4 = """SELECT 2026 - AVG(cars.year) AS average_age
-# FROM cars, car_complaints
-# WHERE cars.car_id = car_complaints.car_id
-# AND NLfilter(car_complaints.summary, 'In the complaint, the car has some problems with engine / connected to engine. Complaint: {summary}.')
-# """
-# sql4_l10 = """SELECT 2026 - AVG(cars.year) AS average_age
-# FROM cars, car_complaints
-# WHERE cars.car_id = car_complaints.car_id
-# AND NLfilter(car_complaints.summary, 'In the complaint, the car has some problems with engine / connected to engine. Complaint: {summary}.')
-# LIMIT 10
-# """
-# sql5 = """SELECT COUNT(*) AS count
-# FROM (
-#     SELECT DISTINCT cars.car_id
-#     FROM cars, car_images, car_audio
-#     WHERE cars.car_id = car_images.car_id
-#     AND cars.car_id = car_audio.car_id
-#     AND cars.transmission = 'Automatic'
-#     AND NLfilter(car_audio.audio_path, 'You are given an audio recording of car diagnostics. Return true if the recording captures an audio of a damaged car.')
-#     AND NLfilter(car_images.image_path, 'You are given an image of a vehicle or its parts. Return true if car is damaged.')
-# ) LIMIT 100
-# """
+
 sql4 = """SELECT cars.car_id
 FROM cars, car_complaints
 WHERE cars.car_id = car_complaints.car_id
@@ -67,7 +46,7 @@ AND NLfilter(car_audio.audio_path, 'You are given an audio recording of car diag
 AND NLfilter(car_images.image_path, 'You are given an image of a vehicle or its parts. Return true if car is damaged.')
 LIMIT 100
 """
-# This is a changed sql 6
+
 sql6 = """WITH sick_audio AS (
     SELECT car_audio.car_id
     FROM cars, car_audio

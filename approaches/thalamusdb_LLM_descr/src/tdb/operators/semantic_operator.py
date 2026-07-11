@@ -38,27 +38,7 @@ class SemanticOperator:
             with open(model_path) as file:
                 self.models = json.load(file)
 
-    # def _get_description(self, item_text):
-    #     """Look up description for a file path across all relevant tables."""
-    #     filename = item_text.split("/")[-1]
-        
-    #     for table, col in [("car_images", "image_path"), ("car_audio", "audio_path")]:
-    #         try:
-    #             result = self.db.execute2list(
-    #                 f"SELECT description FROM {table} "
-    #                 f"WHERE {col} LIKE '%{filename}%' "
-    #                 f"AND description IS NOT NULL LIMIT 1"
-    #             )
-    #             if result:
-    #                 return result[0][0]
-    #         except:
-    #             pass
-    #     if any(
-    #         item_text.endswith(extension) \
-    #         for extension in ['.png', '.jpg', '.jpeg', '.wav', '.mp3']):
-    #         print("Duckdb does not include the description added.")
-    #     return None
-
+    #Added function
     def _get_description(self, item_text):
         """Look up description for a file path across all relevant tables."""
         filename = item_text.split("/")[-1]
